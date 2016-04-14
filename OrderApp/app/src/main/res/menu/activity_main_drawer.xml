@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_daftar_pesanan"
+            android:icon="@drawable/ic_daftar_pesanan"
+            android:title="Daftar Pesanan" />
+        <item
+            android:id="@+id/nav_tambah_pesanan"
+            android:icon="@drawable/ic_tambah_pesanan"
+            android:title="Tambah Pesanan" />
+        <item
+            android:id="@+id/nav_daftar_menu"
+            android:icon="@drawable/ic_daftar_menu"
+            android:title="Daftar Menu" />
+        <item
+            android:id="@+id/nav_keluar"
+            android:icon="@drawable/ic_keluar"
+            android:title="Keluar" />
+    </group>
+
+</menu>
