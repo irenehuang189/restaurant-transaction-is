@@ -16,6 +16,8 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
+    private DaftarPesananFragment fragmentDaftarPesanan;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +40,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         // Default menu selected
         navigationView.getMenu().getItem(0).setChecked(true);
+
+        // Default fragment
+        fragmentDaftarPesanan = new DaftarPesananFragment();
+        getSupportFragmentManager().beginTransaction()
+                .add(R.id.fragment_container, fragmentDaftarPesanan).commit();
     }
 
     @Override
@@ -80,7 +87,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         int id = item.getItemId();
 
         if (id == R.id.nav_daftar_pesanan) {
-            // Handle daftar pesanan
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.fragment_container, fragmentDaftarPesanan).commit();
         }
         else if (id == R.id.nav_tambah_pesanan) {
 
