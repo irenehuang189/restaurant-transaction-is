@@ -3,6 +3,9 @@
 .input-field input[type=text] {
   border-bottom: 1px solid #ffeb3b; /* yellow */
 }
+.input-field input[type=password] {
+  border-bottom: 1px solid #ffeb3b; /* yellow */
+}
 
 /* label color */
 .input-field label {
@@ -14,6 +17,15 @@
 }
 /* label underline focus color */
 .input-field input[type=text]:focus {
+ border-bottom: 1px solid #fff;
+ box-shadow: 0 1px 0 0 #fff;
+}
+/* label focus color */
+.input-field input[type=password]:focus + label {
+ color: #fff;
+}
+/* label underline focus color */
+.input-field input[type=password]:focus {
  border-bottom: 1px solid #fff;
  box-shadow: 0 1px 0 0 #fff;
 }
@@ -48,7 +60,7 @@
   border-bottom: 1px solid #e0e0e0;
 }
 
-#no-padding {
+.no-padding {
   padding: 0px;
   margin: 0px;
 }
