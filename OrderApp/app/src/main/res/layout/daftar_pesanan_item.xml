@@ -10,8 +10,8 @@
         android:id="@+id/imgview"
         android:layout_width="0dp"
         android:layout_weight="1"
-        android:src="@drawable/ic_keluar"
-        android:layout_height="wrap_content" />
+        android:src="@drawable/ic_table"
+        android:layout_height="40dp" />
 
     <TextView
         android:id="@+id/txtview"

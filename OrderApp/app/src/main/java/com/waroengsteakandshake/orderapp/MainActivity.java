@@ -9,7 +9,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.widget.Toast;
@@ -17,6 +16,7 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private DaftarPesananFragment fragmentDaftarPesanan;
+    private TambahPesananFragment fragmentTambahPesanan;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +39,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
 
         // Default menu selected
-        navigationView.getMenu().getItem(0).setChecked(true);
+        if (navigationView != null) {
+            navigationView.getMenu().getItem(0).setChecked(true);
+        }
 
         // Default fragment
         fragmentDaftarPesanan = new DaftarPesananFragment();
@@ -87,11 +89,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         int id = item.getItemId();
 
         if (id == R.id.nav_daftar_pesanan) {
+            fragmentDaftarPesanan = new DaftarPesananFragment();
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.fragment_container, fragmentDaftarPesanan).commit();
         }
         else if (id == R.id.nav_tambah_pesanan) {
-
+            fragmentTambahPesanan = new TambahPesananFragment();
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.fragment_container, fragmentTambahPesanan).commit();
         }
         else if (id == R.id.nav_daftar_menu) {
 
