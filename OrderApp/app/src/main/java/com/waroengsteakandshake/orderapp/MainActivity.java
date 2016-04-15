@@ -1,5 +1,6 @@
 package com.waroengsteakandshake.orderapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -11,6 +12,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -113,5 +116,34 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             drawer.closeDrawer(GravityCompat.START);
         }
         return true;
+    }
+
+    public void onTambah(View view) {
+        String nomor_meja = ((EditText) findViewById(R.id.nomor_meja)).getText().toString();
+        String jumlah_chicken_cordon_bleu =
+                ((EditText) findViewById(R.id.jumlah_chicken_cordon_bleu)).getText().toString();
+        String jumlah_chicken_double=
+                ((EditText) findViewById(R.id.jumlah_chicken_double)).getText().toString();
+        String jumlah_steak_waroeng =
+                ((EditText) findViewById(R.id.jumlah_steak_waroeng)).getText().toString();
+        String jumlah_milkshake_strawberry =
+                ((EditText) findViewById(R.id.jumlah_milkshake_strawberry)).getText().toString();
+        String jumlah_avocado_juice =
+                ((EditText) findViewById(R.id.jumlah_avocado_juice)).getText().toString();
+        String jumlah_teh_panas =
+                ((EditText) findViewById(R.id.jumlah_teh_panas)).getText().toString();
+
+        /*
+        intent.putExtra("jumlah_chicken_cordon_bleu", jumlah_chicken_cordon_bleu);
+        intent.putExtra("jumlah_chicken_double", jumlah_chicken_double);
+        intent.putExtra("jumlah_steak_waroeng", jumlah_steak_waroeng);
+        intent.putExtra("jumlah_milkshake_strawberry", jumlah_milkshake_strawberry);
+        intent.putExtra("jumlah_avocado_juice", jumlah_avocado_juice);
+        intent.putExtra("jumlah_teh_panas", jumlah_teh_panas);
+        */
+
+        fragmentDaftarPesanan = new DaftarPesananFragment();
+        getSupportFragmentManager().beginTransaction()
+                .add(R.id.fragment_container, fragmentDaftarPesanan).commit();
     }
 }

@@ -1,5 +1,6 @@
 package com.waroengsteakandshake.orderapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -46,9 +47,8 @@ public class DaftarPesananFragment extends Fragment {
 
                 final String item = (String) parent.getItemAtPosition(position);
                 //do something
-                String toToast = "Sip!";
-                Toast toast = Toast.makeText(getContext(), toToast, Toast.LENGTH_SHORT);
-                toast.show();
+
+                startActivity(new Intent(getActivity(), PesananAcitivity.class));
             }
 
         });
