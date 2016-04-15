@@ -10,7 +10,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.widget.Toast;
+
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+
+    private DaftarPesananFragment fragmentDaftarPesanan;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +37,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (navigationView != null) {
             navigationView.setNavigationItemSelectedListener(this);
         }
+
+        // Default menu selected
+        navigationView.getMenu().getItem(0).setChecked(true);
+
+        // Default fragment
+        fragmentDaftarPesanan = new DaftarPesananFragment();
+        getSupportFragmentManager().beginTransaction()
+                .add(R.id.fragment_container, fragmentDaftarPesanan).commit();
     }
 
     @Override
@@ -57,8 +71,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         int id = item.getItemId();
 
-        if (id == R.id.action_settings) {
-            return true;
+        if (id == R.id.action_about) {
+            String toToast = "Irene Rahman Heri";
+            Toast toast = Toast.makeText(getApplicationContext(), toToast, Toast.LENGTH_SHORT);
+            toast.show();
         }
 
         return super.onOptionsItemSelected(item);
@@ -71,7 +87,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         int id = item.getItemId();
 
         if (id == R.id.nav_daftar_pesanan) {
-            // Handle daftar pesanan
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.fragment_container, fragmentDaftarPesanan).commit();
         }
         else if (id == R.id.nav_tambah_pesanan) {
 
