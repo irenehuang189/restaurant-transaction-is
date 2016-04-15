@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private DaftarPesananFragment fragmentDaftarPesanan;
     private TambahPesananFragment fragmentTambahPesanan;
+    private DaftarMenuWSFragment fragmentDaftarMenu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,10 +100,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     .add(R.id.fragment_container, fragmentTambahPesanan).commit();
         }
         else if (id == R.id.nav_daftar_menu) {
-
+            fragmentDaftarMenu = new DaftarMenuWSFragment();
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.fragment_container, fragmentDaftarMenu).commit();
         }
         else if (id == R.id.nav_keluar) {
-
+            //Logout
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
