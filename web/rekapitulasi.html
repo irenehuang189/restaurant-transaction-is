@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <title>Rekapitulasi | Waroeng Steak and Shake</title>
 
-    <link rel="icon" type="image/png" href="img/logo.jpg" />
+    <link rel="icon" type="image/png" href="img/logo-navbar.jpg" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css" />
@@ -17,13 +17,13 @@
     <!-- Navbar -->
     <nav>
       <div class="nav-wrapper black">
-        <a href="#" class="brand-logo">
+        <a class="brand-logo">
           <img class="responsive-img" src="img/logo-navbar.jpg" />
         </a>
         <ul class="right hide-on-med-and-down">
-          <li><a class="waves-effect waves-light btn yellow black-text">REKAPITULASI</a></li>
-          <li><a class="waves-effect waves-light btn yellow black-text">PEMBAYARAN</a></li>
-          <li><a class="waves-effect waves-light btn red">KELUAR</a></li>
+          <li><a id="rekapitulasi-btn" class="waves-effect waves-light btn yellow black-text">REKAPITULASI</a></li>
+          <li><a id="pembayaran-btn" class="waves-effect waves-light btn yellow black-text">PEMBAYARAN</a></li>
+          <li><a href="index.html" class="waves-effect waves-light btn red">KELUAR</a></li>
         </ul>
       </div>
     </nav>
@@ -34,7 +34,7 @@
       <div class="row center-align">
         <h1 class="col l12">Rekapitulasi Penjualan</h1>
         <div class="col l2 offset-l5">
-          <input type="date" class="datepicker">
+          <input type="date" class="datepicker white">
         </div>
       </div>
       <div class="row">
@@ -50,17 +50,17 @@
             <!-- Pesanan -->
             <div class="row">
               <div class="col l3">
-                10
+                30
               </div>
               <div class="col l9">
                 Chicken Gordon Bleu
               </div>
               <hr class="grey lighten-2">
               <div class="col l3">
-                10
+                18
               </div>
               <div class="col l9">
-                Chicken Gordon Bleu
+                Steak Waroeng
               </div>
             </div>
           </div>
@@ -78,17 +78,17 @@
             <!-- Pesanan -->
             <div class="row">
               <div class="col l3">
-                10
+                6
               </div>
               <div class="col l9">
-                Chicken Gordon Bleu
+                Milkshake Strawberry
               </div>
               <hr class="grey lighten-2">
               <div class="col l3">
-                10
+                12
               </div>
               <div class="col l9">
-                Chicken Gordon Bleu
+                Lemon Tea
               </div>
             </div>
           </div>

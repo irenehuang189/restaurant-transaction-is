@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <title>Login | Waroeng Steak and Shake</title>
 
-    <link rel="icon" type="image/png" href="img/logo.jpg" />
+    <link rel="icon" type="image/png" href="img/logo-navbar.jpg" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css" />
     <link rel="stylesheet" href="css/style.css" />
@@ -15,24 +15,24 @@
     <div class="valign-wrapper full-height black">
       <div class="valign container">
         <div class="row center-align">
-          <img class="responsive-img" src="img/logo.jpg" />
+          <img class="responsive-img" src="img/logo.png" />
         </div>
 
         <!-- Form -->
         <div class="row">
-          <form class="col l4 offset-l4">
+          <form id="login" class="col l4 offset-l4">
             <div class="input-field">
               <i class="material-icons prefix">perm_identity</i>
-              <input id="icon_prefix" type="text" class="validate white-text" />
-              <label for="icon_prefix">Username</label>
+              <input id="username" type="text" class="validate white-text" />
+              <label for="username">Username</label>
             </div>
             <div class="input-field">
               <i class="material-icons prefix">vpn_key</i>
-              <input id="icon_prefix" type="text" class="validate white-text" />
-              <label for="icon_prefix">Password</label>
+              <input id="password" type="password" class="validate white-text" />
+              <label for="password">Password</label>
             </div>
             <div class="right-align">
-              <a href="#" class="btn waves-effect waves-light yellow black-text">LOGIN</a>
+              <a href="#" id="login-btn" class="btn waves-effect waves-light yellow black-text">LOGIN</a>
             </div>
           </form>
         </div>
