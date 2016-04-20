@@ -1,0 +1,66 @@
+/* Input field color */
+/* label underline color */
+.input-field input[type=text] {
+  border-bottom: 1px solid #ffeb3b; /* yellow */
+}
+.input-field input[type=password] {
+  border-bottom: 1px solid #ffeb3b; /* yellow */
+}
+
+/* label color */
+.input-field label {
+ color: #ffeb3b; /* yellow */
+}
+/* label focus color */
+.input-field input[type=text]:focus + label {
+ color: #fff;
+}
+/* label underline focus color */
+.input-field input[type=text]:focus {
+ border-bottom: 1px solid #fff;
+ box-shadow: 0 1px 0 0 #fff;
+}
+/* label focus color */
+.input-field input[type=password]:focus + label {
+ color: #fff;
+}
+/* label underline focus color */
+.input-field input[type=password]:focus {
+ border-bottom: 1px solid #fff;
+ box-shadow: 0 1px 0 0 #fff;
+}
+/* valid color */
+/*.input-field input[type=text].valid {
+ border-bottom: 1px solid #000;
+ box-shadow: 0 1px 0 0 #000;
+}*/
+/* invalid color */
+/*.input-field input[type=text].invalid {
+ border-bottom: 1px solid #000;
+ box-shadow: 0 1px 0 0 #000;
+}*/
+.input-field .prefix {
+ color: #ffeb3b; /* yellow */
+}
+/* icon prefix focus color */
+.input-field .prefix.active {
+ color: #fff;
+}
+
+/* Other */
+.full-height {
+  height: 100vh;
+}
+
+.full-width {
+  width: 100vw;
+}
+
+.bottom-border {
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.no-padding {
+  padding: 0px;
+  margin: 0px;
+}
