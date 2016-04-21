@@ -30,6 +30,7 @@ public class LoginActivity extends AppCompatActivity {
             if (password.equals("password")) {
                 Intent intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
+                finish();
             }
             else {
                 String toToast = "Password salah";

@@ -8,8 +8,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -17,25 +22,39 @@ import android.widget.Toast;
  */
 public class DaftarPesananFragment extends Fragment {
 
-    public DaftarPesananFragment() {
+    private String nomor_meja;
+    private String cordon_bleu;
+    private String chicken_double;
+    private String drumstick;
+    private String beef_steak;
+    private String strawberry;
+    private String coklat;
 
+    private List<String> list_meja;
+    private ListView listView;
+    private Map<String, String[]> data;
+
+    public static DaftarPesananFragment newInstance(List<String> list_meja) {
+        DaftarPesananFragment fragment = new DaftarPesananFragment();
+
+        fragment.list_meja = list_meja;
+        fragment.data = new HashMap<>();
+
+        return fragment;
     }
 
+    public DaftarPesananFragment() {}
+
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(final LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_daftar_pesanan, container, false);
 
-        ListView listView = (ListView) view.findViewById(R.id.listview);
+        listView = (ListView) view.findViewById(R.id.listview);
 
-        String[] values = new String[] {
-                "Meja 1", "Meja 2", "Meja 3",
-                "Meja 4", "Meja 5", "Meja 6", "Meja 7", "Meja 8",
-                "Meja 9", "Meja 10" };
-
-        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),
-                R.layout.daftar_pesanan_item, R.id.txtview, values);
+        final ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(),
+                R.layout.daftar_pesanan_item, R.id.txtview, list_meja);
 
         listView.setAdapter(adapter);
 
@@ -46,14 +65,28 @@ public class DaftarPesananFragment extends Fragment {
                                     int position, long id) {
 
                 final String item = (String) parent.getItemAtPosition(position);
-                //do something
+                String[] pesanan = data.get(item);
 
-                startActivity(new Intent(getActivity(), PesananAcitivity.class));
+                Intent intent = new Intent(getActivity(), PesananAcitivity.class);
+                intent.putExtra("nomor_meja", "" + item.charAt(5));
+                intent.putExtra("jumlah_chicken_cordon_bleu", pesanan[0]);
+                intent.putExtra("jumlah_chicken_cordon_double", pesanan[1]);
+                intent.putExtra("jumlah_chicken_drumstick", pesanan[2]);
+                intent.putExtra("jumlah_beef_steak", pesanan[3]);
+                intent.putExtra("jumlah_milkshake_strawberry", pesanan[4]);
+                intent.putExtra("jumlah_milkshake_coklat", pesanan[5]);
+                startActivity(intent);
             }
 
         });
 
         // Inflate the layout for this fragment
         return view;
+    }
+
+    public void addItem(String meja, String[] pesanan) {
+        list_meja.add(meja);
+        data.put(meja, pesanan);
+        ((BaseAdapter) listView.getAdapter()).notifyDataSetChanged();
     }
 }
