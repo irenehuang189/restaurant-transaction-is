@@ -1,5 +1,6 @@
 package com.waroengsteakandshake.orderapp;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -12,6 +13,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -29,7 +31,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private int milkshake_coklat;
 
     private DaftarPesananFragment daftarPesananFragment;
-    private List<String> list_meja;
+
+    private NavigationView navigationView;
+
+    private boolean[] status_ketersediaan;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,12 +46,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+
         if (drawer != null) {
             drawer.setDrawerListener(toggle);
         }
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
         if (navigationView != null) {
             navigationView.setNavigationItemSelectedListener(this);
         }
@@ -67,6 +73,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         beef_steak = 0;
         milkshake_coklat = 0;
         milkshake_strawberry = 0;
+
+        //Semua menu tersedia
+        status_ketersediaan = new boolean[6];
+        for (int i = 0; i < 6; i++) {
+            status_ketersediaan[i] = true;
+        }
+
+        //dummy status tidak tersedia
+        status_ketersediaan[3] = false;
     }
 
     @Override
@@ -123,7 +138,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
         else if (id == R.id.nav_daftar_menu) {
             fragmentManager.beginTransaction()
-                    .replace(R.id.fragment_container, new DaftarMenuWSFragment())
+                    .replace(R.id.fragment_container, DaftarMenuWSFragment.newInstance(status_ketersediaan))
                     .commit();
         }
         else if (id == R.id.nav_keluar) {
@@ -163,12 +178,29 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     jumlah_milkshake_strawberry,
                     jumlah_milkshake_coklat
             };
-            daftarPesananFragment.addItem("Meja " + nomor_meja, pesanan);
-            getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.fragment_container, daftarPesananFragment)
-                    .commit();
+
+            //Validasi nomor meja
+            if (nomor_meja.equals("") || Integer.parseInt(nomor_meja) <= 0) {
+                String to_toast = "Nomor meja tidak valid";
+                Toast toast = Toast.makeText(getApplicationContext(), to_toast, Toast.LENGTH_SHORT);
+                toast.show();
+            }
+            else {
+                daftarPesananFragment.addItem("Meja " + nomor_meja, pesanan);
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.fragment_container, daftarPesananFragment)
+                        .commit();
+
+                if (navigationView != null) {
+                    navigationView.getMenu().getItem(0).setChecked(true);
+                    onNavigationItemSelected(navigationView.getMenu().getItem(0));
+                }
+            }
         }
         catch (Exception ignored) {}
+
+        InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
     }
 
     public void add1(View view) {

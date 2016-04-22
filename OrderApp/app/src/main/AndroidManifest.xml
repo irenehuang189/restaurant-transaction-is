@@ -22,6 +22,7 @@
 
         <activity
             android:name=".MainActivity"
+            android:launchMode="singleTop"
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar">
 
@@ -29,7 +30,8 @@
 
         <activity
             android:name=".PesananAcitivity"
-            android:label="Daftar Pesanan">
+            android:label="Daftar Pesanan"
+            android:parentActivityName=".MainActivity">
 
         </activity>
 

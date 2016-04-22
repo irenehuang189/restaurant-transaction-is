@@ -9,8 +9,6 @@ import android.widget.Toast;
 
 public class LoginActivity extends AppCompatActivity {
 
-    public static String username = null;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

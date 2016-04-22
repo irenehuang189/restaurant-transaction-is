@@ -10,8 +10,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
-
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -21,14 +19,6 @@ import java.util.Map;
  * Created by User on 15-Apr-16.
  */
 public class DaftarPesananFragment extends Fragment {
-
-    private String nomor_meja;
-    private String cordon_bleu;
-    private String chicken_double;
-    private String drumstick;
-    private String beef_steak;
-    private String strawberry;
-    private String coklat;
 
     private List<String> list_meja;
     private ListView listView;
